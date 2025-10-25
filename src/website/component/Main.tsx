@@ -1,58 +1,85 @@
+
+
 import React from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
-import Davido from '../../images/davido.jpg';
+import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import Davido from "../../images/davido.jpg";
+import "../css/main.css"
+import { useNavigate } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const Main: React.FC = () => {
+  const navigate = useNavigate()
+  const goToSignup = () => {
+    navigate("/signup");
+  };
   return (
-  <div style={{marginTop:'8rem'}}>
-      <main className=" mt-6 py-5">
-      <Container fluid>
-        <Row className="justify-content-center">
-          <Col xs={12} sm={10} lg={8} className="d-flex flex-column gap-4">
+    <div className="main-wrapper">
+      <main className="hero-section position-relative text-center text-white">
+        {/* Wavy SVG Background */}
+        <div className="wave-bg">
+          <svg
+            viewBox="0 0 1440 320"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="#007bff"
+              fillOpacity="1"
+              d="M0,224L48,197.3C96,171,192,117,288,112C384,107,480,149,576,176C672,203,768,213,864,213.3C960,213,1056,203,1152,181.3C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+            ></path>
+          </svg>
+        </div>
 
-            {/* Hero Section */}
-            <section
-              className="d-flex flex-column align-items-center justify-content-center text-center rounded-3 p-4 p-sm-5"
-              style={{
-                minHeight: "480px",
-                backgroundImage: `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url(${Davido})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                color: "white",
-              }}
-            >
-              <h1 className="fw-bold display-5 mb-2">
-                Experience Live Events
-              </h1>
-              <h2 className="fs-6 mb-3">
-                Find tickets to concerts, sports, arts, and more.
-              </h2>
-              <div className="d-flex flex-wrap justify-content-center gap-3 mt-3">
-                <Button variant="primary" size="lg">
-                  Browse Events
-                </Button>
-                <Button variant="light" size="lg" className="text-dark">
-                  Sign Up
-                </Button>
-              </div>
-            </section>
+        {/* Decorative Circle */}
+        <div className="decorative-circle"></div>
 
-            {/* Why Choose Section */}
-            <section className="px-2 px-sm-3 mt-4">
-              <h1 className="text-black fw-bold display-6 mb-3">
-                Why Choose TicketHub?
-              </h1>
-              <p className="text-dark fs-5">
-                We make it easy to discover and attend the events you love. 
-                Browse events near you, get the best tickets, and enjoy a seamless experience every time.
-              </p>
-            </section>
+        {/* Hero Content */}
+        <Container className="hero-content" fluid>
+          <h1 className="fw-bold display-4 mb-2">🎟️ TicketHub</h1>
+          <p className="fs-5 mb-4">
+            Discover, book, and enjoy your favorite live experiences effortlessly.
+          </p>
+          <div className="d-flex flex-wrap justify-content-center gap-3">
+            {/* <Button variant="light" size="lg" className="text-primary fw-semibold">
+              Login
+            </Button> */}
+            <Button variant="primary" size="lg" className="fw-semibold" onClick={goToSignup}>
+              Get Started
+            </Button>
+          </div>
+        </Container>
+      </main>
 
-          </Col>
-        </Row>
-      </Container>
-    </main>
-  </div>
+    
+      {/* Feature Boxes */}
+<section className="features-section py-5">
+  <Container fluid>
+    <Row className="g-4 justify-content-center align-items-stretch">
+      <Col xs={12} sm={6} md={4} className="d-flex">
+        <Card className="feature-card shadow-sm p-4 text-center flex-fill">
+          <h5 className="fw-bold mb-2">🎤 Live Concerts</h5>
+          <p>Experience top artists performing live near you.</p>
+        </Card>
+      </Col>
+      <Col xs={12} sm={6} md={4} className="d-flex">
+        <Card className="feature-card shadow-sm p-4 text-center flex-fill">
+          <h5 className="fw-bold mb-2">🏟️ Sports Events</h5>
+          <p>Catch thrilling matches and support your favorite teams.</p>
+        </Card>
+      </Col>
+      <Col xs={12} sm={6} md={4} className="d-flex">
+        <Card className="feature-card shadow-sm p-4 text-center flex-fill">
+          <h5 className="fw-bold mb-2">🎭 Theatre & Arts</h5>
+          <p>Enjoy captivating performances and cultural events.</p>
+        </Card>
+      </Col>
+    </Row>
+  </Container>
+</section>
+
+
+    
+    </div>
   );
 };
 

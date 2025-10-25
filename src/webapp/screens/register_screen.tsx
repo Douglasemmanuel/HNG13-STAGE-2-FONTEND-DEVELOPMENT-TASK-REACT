@@ -1,8 +1,18 @@
 import React from 'react'
-
+import RegisterForm from '../modules/auth/components/registerform';
+import Header from '../../website/component/Header';
+import Footer from '../../website/component/Footer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 const RegisterScreen:React.FC = () => {
   return (
-    <div>RegisterScreen</div>
+     <div className="d-flex flex-column min-vh-100">
+          <main className="flex-grow-1">
+            <Header/>
+           <RegisterForm/>
+          </main>
+          <Footer />
+        </div>
+  
   )
 }
 

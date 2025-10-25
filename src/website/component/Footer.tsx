@@ -31,6 +31,9 @@ const Footer:React.FC = () => {
             <Instagram size={24} />
           </a>
         </div>
+          <p className="mb-0 mt-4 text-muted">
+          © {new Date().getFullYear()} TicketHub. All rights reserved.
+        </p>
       </Container>
     </footer>
   );
