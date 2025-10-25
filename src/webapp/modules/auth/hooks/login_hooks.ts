@@ -20,7 +20,7 @@ export const useLogin = () => {
     if (user.password !== data.password) {
       return { success: false, message: "Incorrect password!" };
     }
-
+    localStorage.setItem("ticketapp_session", JSON.stringify(user));
     return { success: true, message: "Login successful!" };
   }, []);
 

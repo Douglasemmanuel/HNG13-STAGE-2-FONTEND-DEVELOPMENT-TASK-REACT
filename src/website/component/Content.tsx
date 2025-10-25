@@ -2,7 +2,9 @@ import React from "react";
 import { Container, Row, Col, Button, Card, Breadcrumb } from "react-bootstrap";
 import Davido from '../../images/davido.jpg';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from "react-router-dom";
 const Content:React.FC = () => {
+   const navigate = useNavigate();
   return (
     <Container className="py-5">
       <Row className="justify-content-center">
@@ -47,7 +49,7 @@ const Content:React.FC = () => {
           </p>
 
           {/* Buy Button */}
-          <Button variant="primary" size="lg">
+          <Button variant="primary" size="lg" onClick={()=> navigate('/signup')}>
             Buy Tickets
           </Button>
         </Col>

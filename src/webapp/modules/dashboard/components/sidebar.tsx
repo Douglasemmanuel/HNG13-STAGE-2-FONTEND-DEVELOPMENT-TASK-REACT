@@ -7,8 +7,8 @@ import { FaTicketAlt } from 'react-icons/fa';
 import '../../../css/sidebar.css' ;
 import { useState , useEffect } from 'react';
 import { useNavigate} from 'react-router-dom';
-import Douglas from '../../../../images/Douglas.jpeg'
-
+import Douglas from '../../../../images/logo2.jpeg'
+import { useCurrentUser } from '../../auth/hooks/user_hooks';
 interface SidebarProps {
   isOpen: boolean;
   toggleSidebar: () => void;
@@ -47,12 +47,7 @@ useEffect(() => {
 
   return () => window.removeEventListener('resize', handleResize);
 }, []);
-const handleLogout = () => {
-  
-  navigate('/')
-  console.log("Logging out...");
-};
-
+ const { currentUser, logout } = useCurrentUser();
 const goTodashboard =()=>{
   navigate('/dashboard')
 }
@@ -87,8 +82,9 @@ return (
           src={Douglas}
            
             className="user-avatar" 
+           
           />
-          <p className="user-name">Douglas</p>
+          <p className="user-name">{ currentUser ? `${currentUser.firstName} ${currentUser.lastName}`  : ''}</p>
         </div>
       )}
         <ul className="sidebar-nav">
@@ -101,7 +97,7 @@ return (
       
         
         </ul>
-              <div className="logout-container" onClick={handleLogout}>
+              <div className="logout-container" onClick={logout}>
         <IoLogOutOutline  size={24} className="logout-icon" />
         {(isOpen || isDesktop)&& <span className="logout-label">Logout</span>}
       </div>

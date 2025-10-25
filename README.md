@@ -1,73 +1,144 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+```markdown
+# TicketApp - React Version
 
-Currently, two official plugins are available:
+A full-featured **Ticket Management Web Application** built with React, demonstrating authentication, protected routes, dashboard statistics, and ticket CRUD functionality. The app is responsive, accessible, and uses `localStorage` to simulate backend storage.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## Features
 
-## Expanding the ESLint configuration
+- **Landing Page**: Hero section with wavy SVG, decorative circles, CTA buttons.  
+- **Login & Signup**: Form validation with inline error messages and toast notifications.  
+- **Protected Dashboard**: Displays ticket summary (Total, Open, Resolved) and navigation to Ticket Management.  
+- **Ticket Management**: Full CRUD (Create, Read, Update, Delete) with validation and status indicators.  
+- **Session Management**: Uses `localStorage` (`ticketapp_session`) to simulate authentication.  
+- **Responsive & Accessible**: Mobile, tablet, and desktop-friendly layout with semantic HTML and focus states.  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Demo
+- Landing Page  
+- Dashboard  
+- Ticket Management  
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Tech Stack
+
+- **Frontend**: React 18  
+- **Routing**: React Router v6  
+- **State Management**: React Hooks (useState, useEffect, useCallback)  
+- **Forms & Validation**: react-hook-form  
+- **CSS**: CSS Modules / SCSS  
+- **Icons**: React Icons  
+- **Storage**: `localStorage` for session and tickets  
+- **Build Tool**: Vite / Create React App  
+
+---
+
+
+
+## Setup and Installation
+
+1. **Clone the repository**  
+```bash
+git clonehttps://github.com/Douglasemmanuel/HNG13-STAGE-2-FONTEND-DEVELOPMENT-TASK-REACT.git
+cd ticket-app-react
+````
+
+2. **Install dependencies**
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. **Run development server**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm start
 ```
+
+4. **Open in browser**
+
+```
+https://tickets-hubapp.vercel.app/#
+```
+
+---
+
+## Authentication
+
+* Login/Signup simulated with `localStorage`.
+* Valid session stored under `ticketapp_session`.
+* Protected routes redirect unauthorized users to `/auth/login`.
+* Logout clears session and redirects to the landing page.
+
+---
+
+## Dashboard
+
+* Shows **summary statistics**:
+
+  * Total Tickets
+  * Open Tickets
+  * Resolved Tickets
+* Navigation to Ticket Management page.
+* Logout button visible to clear session.
+
+---
+
+## Ticket Management
+
+* **CRUD operations**:
+
+  * **Create**: Form with title, description, status.
+  * **Read**: List tickets with card layout and status colors.
+  * **Update**: Edit ticket with validation.
+  * **Delete**: Remove ticket with confirmation.
+
+* **Status colors**:
+
+  * `open` → Green
+  * `in_progress` → Amber
+  * `closed` → Gray
+
+* Validation ensures required fields are filled.
+
+* Feedback via inline messages or toast notifications.
+
+---
+
+## Responsive Design
+
+* **Max width**: 1440px, content centered.
+* Hero section with wavy SVG and decorative circles.
+* Mobile: stacked layout with collapsible nav.
+* Tablet/Desktop: multi-column grid layout.
+
+---
+
+## Known Issues
+
+* Only simulated authentication (no backend).
+* Tickets persist in `localStorage` only.
+* Limited browser testing; modern browsers recommended.
+
+---
+
+## License
+
+MIT License © 2025 [Your Name]
+
+---
+
+## Additional Notes
+
+* **Example Test User**:
+
+```
+Email: test@example.com
+Password: password123
+```
+

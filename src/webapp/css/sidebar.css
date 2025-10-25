@@ -191,8 +191,8 @@
 }
 
 .user-avatar {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -201,6 +201,8 @@
   /* margin-top: 0.5rem; */
   padding-top: 10px;
   font-weight: 600;
+  font-size: 0.8rem;
+
   color: #333;
 }
 
