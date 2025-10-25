@@ -5,19 +5,51 @@ import { useForm } from "react-hook-form";
  import { zodResolver } from '@hookform/resolvers/zod';
 import { signupSchema } from '../validations/registerValidation';
 import type {SignupFormData}  from "../validations/registerValidation";
+import {  toast } from "react-toastify";
+import { useNavigate } from 'react-router-dom';
 const RegisterForm:React.FC = () => {
      const {
         register,
         handleSubmit,
+        reset,
         formState: { errors }
       } = useForm<SignupFormData>({
         resolver: zodResolver(signupSchema)
       });
-    
-      const onSubmit = (data:SignupFormData) => {
-        console.log("Register Data:", data);
-        // handle login logic here
-      };
+    const navigate = useNavigate()
+      const onSubmit = (data: SignupFormData) => {
+          // If there are no errors, trigger a success toast
+          toast.success("🎉 Registration Successful.", {
+            position: "top-center",
+            autoClose: 2500,
+             style:{
+               width: "500px",          
+          maxWidth: "90%",
+            }
+          });
+          console.log("Login Data:", data);
+          reset();
+          navigate('/login')
+        };
+        const onError = () => {
+            // Show only one toast error at a time
+            const firstError =
+             errors.firstName?.message ||
+              errors.lastName?.message ||
+              errors.email?.message ||
+               errors.confirmPassword?.message ||
+              errors.password?.message ||
+              "Please check your inputs";
+        
+            toast.error(`${firstError}`, {
+              position: "top-center",
+              autoClose: 2500,
+              style:{
+                 width: "400px",          
+            maxWidth: "90%",
+              }
+            });
+          };
   return (
       <div style={{
         marginTop:'6rem'
@@ -26,7 +58,7 @@ const RegisterForm:React.FC = () => {
            
                <Row className="justify-content-center" >
           <Col xs={12} sm={10} md={6} lg={4}  >
-             <Form onSubmit={handleSubmit(onSubmit)} style={{ marginTop: '3rem' }}>
+             <Form onSubmit={handleSubmit(onSubmit , onError)} style={{ marginTop: '3rem' }}>
       <Row>
         <Col>
           <Form.Label>First Name</Form.Label>

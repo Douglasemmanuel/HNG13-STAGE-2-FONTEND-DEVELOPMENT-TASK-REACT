@@ -5,18 +5,49 @@ import { useForm } from "react-hook-form";
  import { zodResolver } from '@hookform/resolvers/zod';
 import { loginSchema} from "../validations/loginValidation";
 import type { LoginFormData }  from "../validations/loginValidation";
+import { useNavigate } from 'react-router-dom';
+import {  toast } from "react-toastify";
 const Loginform:React.FC = () => {
      const {
     register,
     handleSubmit,
+    reset,
     formState: { errors }
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema)
   });
-
-  const onSubmit = (data: LoginFormData) => {
+  const navigate = useNavigate() ;
+ const onSubmit = (data: LoginFormData) => {
+    // If there are no errors, trigger a success toast
+    toast.success("🎉 Login successful! Welcome back.", {
+      position: "top-center",
+      autoClose: 2500,
+       style:{
+         width: "500px",          
+    maxWidth: "90%",
+      }
+    });
     console.log("Login Data:", data);
-    // handle login logic here
+    reset();
+    navigate('/dashboard')
+  };
+
+  // If validation fails, show a toast error for any schema violation
+  const onError = () => {
+    // Show only one toast error at a time
+    const firstError =
+      errors.email?.message ||
+      errors.password?.message ||
+      "Please check your inputs";
+
+    toast.error(`${firstError}`, {
+      position: "top-center",
+      autoClose: 2500,
+      style:{
+         width: "400px",          
+    maxWidth: "90%",
+      }
+    });
   };
   return (
      <div style={{
@@ -26,7 +57,7 @@ const Loginform:React.FC = () => {
        
            <Row className="justify-content-center" >
       <Col xs={12} sm={10} md={6} lg={4}  >
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form onSubmit={handleSubmit(onSubmit , onError)}>
           <Form.Group className="mb-3" controlId="formGroupEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email"
