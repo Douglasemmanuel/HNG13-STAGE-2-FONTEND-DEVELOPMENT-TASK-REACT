@@ -59,7 +59,7 @@ const goTodashboard =()=>{
 
 
 const goToAllTicket =()=>{
-//   navigate('/dashboard/all-employee')
+  navigate('/dashboard/tickets')
   
 }
 
@@ -99,15 +99,7 @@ return (
             </div>
           </li>
       
-          <li>
-            <div className="nav-item">
-              <FaTicketAlt className={`icon ${isOpen ? 'spaced' : ''}`} size={isOpen? 28:30}/>
-              <span className="label">Tickets</span>
-             
-            </div>
-   
-
-          </li>
+        
         </ul>
               <div className="logout-container" onClick={handleLogout}>
         <IoLogOutOutline  size={24} className="logout-icon" />

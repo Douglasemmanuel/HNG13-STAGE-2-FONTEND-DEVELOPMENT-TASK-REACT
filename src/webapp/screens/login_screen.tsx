@@ -8,7 +8,9 @@ const LoginScreen:React.FC = () => {
     <div className="d-flex flex-column min-vh-100">
           <main className="flex-grow-1">
             <Header/>
-             <Loginform/>
+            <div style={{marginLeft:"1rem" , marginRight:'1rem'}}>
+               <Loginform/>
+            </div>
           </main>
           <Footer />
         </div>

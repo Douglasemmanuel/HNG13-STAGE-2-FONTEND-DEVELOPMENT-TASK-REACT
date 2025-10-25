@@ -8,7 +8,9 @@ const RegisterScreen:React.FC = () => {
      <div className="d-flex flex-column min-vh-100">
           <main className="flex-grow-1">
             <Header/>
+            <div style={{marginLeft:"1rem" , marginRight:'1rem'}}>
            <RegisterForm/>
+           </div>
           </main>
           <Footer />
         </div>

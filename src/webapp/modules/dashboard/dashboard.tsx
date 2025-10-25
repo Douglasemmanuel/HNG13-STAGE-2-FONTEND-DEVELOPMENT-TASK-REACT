@@ -1,7 +1,5 @@
 import React from 'react';
-// import { Container, Row, Col, Card } from 'react-bootstrap';
-// import Sidebar from '../component/Sidebar';
-// import MainDash from './MainDash';
+
 import '../../css/dashboard.css';
 import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
@@ -15,7 +13,6 @@ const Dashboard: React.FC = () => {
       <div className='AppGlass scrollable-container'>
         <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar}/>
         <Outlet /> 
-      {/* <MainDash/> */}
       </div>
     </div>
   );

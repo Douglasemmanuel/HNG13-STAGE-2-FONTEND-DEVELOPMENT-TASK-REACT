@@ -1,0 +1,60 @@
+.ticket-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.ticket-date {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+
+
+
+
+.ticket {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.ticket-body {
+  margin-bottom: 12px;
+}
+
+.ticket-footer {
+  display: flex;
+  justify-content: space-between; /* keeps Order ID left and buttons right */
+  align-items: center;
+}
+
+.ticket-actions {
+  display: flex;
+  gap: 8px; /* space between buttons */
+  flex-wrap: wrap; /* optional: lets buttons wrap if container is too small */
+}
+
+.ticket-btn {
+  padding: 6px 12px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.ticket-btn:hover {
+  background-color: #0056b3;
+}
