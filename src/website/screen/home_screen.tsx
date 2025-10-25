@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../component/Header'
 import Main from '../component/Main'
 import Footer from '../component/Footer'
-import Content from '../component/content'
+import Content from '../component/Content' ;
 import 'bootstrap/dist/css/bootstrap.min.css';
 const HomeScreen:React.FC = () => {
   return (
