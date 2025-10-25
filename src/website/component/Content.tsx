@@ -50,7 +50,7 @@ const Content:React.FC = () => {
 
           {/* Buy Button */}
           <Button variant="primary" size="lg" onClick={()=> navigate('/signup')}>
-            Buy Tickets
+            Create Tickets
           </Button>
         </Col>
       </Row>

@@ -101,7 +101,7 @@ const UpcomingEvents: React.FC = () => {
 
               {/* ✅ Pass the full event object */}
               <Button variant="primary" onClick={() => handleShow(event)}>
-                Buy Tickets
+                Create Tickets
               </Button>
             </Card.Body>
           </Card>
