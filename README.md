@@ -2,7 +2,7 @@
 ```markdown
 # TicketApp - React Version
 
-A full-featured **Ticket Management Web Application** built with React, demonstrating authentication, protected routes, dashboard statistics, and ticket CRUD functionality. The app is responsive, accessible, and uses `localStorage` to simulate backend storage.
+A full-featured **Ticket Management Web Application** built with React, demonstrating <br/>authentication, protected routes, dashboard statistics, and ticket CRUD functionality. The app is responsive, accessible,<br/> and uses `localStorage` to simulate backend storage.
 
 ---
 
