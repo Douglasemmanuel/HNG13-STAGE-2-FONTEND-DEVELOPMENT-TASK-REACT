@@ -18,7 +18,7 @@ const tickets = useTicketStore((state) => state.tickets);
     
   }
   return (
-    <div style={{display:'flex' , flexDirection:'row' , gap:'3rem' , flexWrap:'wrap'}}>
+    <div style={{display:'flex' , flexDirection:'column' , gap:'3rem' , flexWrap:'wrap'}}>
       <UpcomingEvents/>
     {tickets.length > 0 &&   <MyEvent/>}
     </div>
@@ -155,7 +155,9 @@ const MyEvent: React.FC = () => {
   
   return (
     <>
+      <h1>My Tickets</h1>
       <div style={{display:'flex' , flexDirection:'row' , gap:'1rem' , flexWrap:'wrap'}}>
+       
         {tickets.map((ticket) => (
           <TicketCard
             key={ticket.id}
