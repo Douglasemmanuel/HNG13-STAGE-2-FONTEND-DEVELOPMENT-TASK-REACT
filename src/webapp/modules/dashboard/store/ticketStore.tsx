@@ -1,60 +1,5 @@
-// import { create } from "zustand";
-
-// // Store the full ticket data
-// export interface Ticket {
-  
- 
-
-//   id: number;
-//   status: "open" | "in_progress" | "closed";
-//   eventName: string;
-//   eventDate: string;
-//   venue: string;
-//   quantity: string;
-//   attendeeName?: string;
-//   attendeeEmail?: string;
-//   attendeePhone?: string;
-//   ticketType: "VIP" | "Regular" | "Student";
-//   price: number;
-//   purchaseDate: number; // timestamp
-// }
-
-// interface TicketStore {
-//   tickets: Ticket[];
-//   addTicket: (ticket: Omit<Ticket, "id" | "status" | "purchaseDate">) => void;
-//   deleteTicket: (id: number) => void;
-//   editTicket: (id: number, updatedTicket: Partial<Omit<Ticket, "id">>) => void;
-// }
-
-// const useTicketStore = create<TicketStore>((set) => ({
-//   tickets: [],
-
-//   addTicket: (ticket) =>
-//     set((state) => ({
-//       tickets: [
-//         ...state.tickets,
-//         { id: Date.now(), status: "open", purchaseDate: Date.now(), ...ticket },
-//       ],
-//     })),
-
-//   deleteTicket: (id) =>
-//     set((state) => ({
-//       tickets: state.tickets.filter((ticket) => ticket.id !== id),
-//     })),
-
-//   editTicket: (id, updatedTicket) =>
-//     set((state) => ({
-//       tickets: state.tickets.map((ticket) =>
-//         ticket.id === id ? { ...ticket, ...updatedTicket } : ticket
-//       ),
-//     })),
-// }));
-
-// export default useTicketStore;
-
-
-
-import { create } from "zustand";
+import { create  } from "zustand";
+import { persist } from "zustand/middleware";
 
 // Event type
 export interface Event {
@@ -95,33 +40,41 @@ interface TicketStore {
   editTicket: (id: number, updatedTicket: Partial<Omit<Ticket, "id" | "purchaseDate">>) => void;
 }
 
-const useTicketStore = create<TicketStore>((set) => ({
-  tickets: [],
+const useTicketStore = create<TicketStore>()(
+  persist(
+    (set) => ({
+      tickets: [],
 
-  addTicket: (ticket) =>
-    set((state) => ({
-      tickets: [
-        ...state.tickets,
-        {
-          id: Date.now(),
-          status: "open",
-          purchaseDate: Date.now(),
-          ...ticket,
-        },
-      ],
-    })),
+      addTicket: (ticket) =>
+        set((state) => ({
+          tickets: [
+            ...state.tickets,
+            {
+              id: Date.now(),
+              status: "open",
+              purchaseDate: Date.now(),
+              ...ticket,
+            },
+          ],
+        })),
 
-  deleteTicket: (id) =>
-    set((state) => ({
-      tickets: state.tickets.filter((ticket) => ticket.id !== id),
-    })),
+      deleteTicket: (id) =>
+        set((state) => ({
+          tickets: state.tickets.filter((ticket) => ticket.id !== id),
+        })),
 
-  editTicket: (id, updatedTicket) =>
-    set((state) => ({
-      tickets: state.tickets.map((ticket) =>
-        ticket.id === id ? { ...ticket, ...updatedTicket } : ticket
-      ),
-    })),
-}));
+      editTicket: (id, updatedTicket) =>
+        set((state) => ({
+          tickets: state.tickets.map((ticket) =>
+            ticket.id === id ? { ...ticket, ...updatedTicket } : ticket
+          ),
+        })),
+    }),
+   {
+      name: 'ticket-storage', // key in localStorage
+     
+    }
+  )
+);
 
 export default useTicketStore;
