@@ -1,26 +1,24 @@
 import React from 'react'
-// import { FaTicketAlt } from 'react-icons/fa';
-import { FaTicketAlt, FaEnvelopeOpenText, FaCheckCircle, FaExclamationTriangle } from "react-icons/fa";
+
 import type { IconType } from 'react-icons/lib';
-// import { IconType } from "react-icons";
+import { MdCheckCircleOutline, MdPendingActions } from 'react-icons/md';
+import {  FaTicketAlt, FaSpinner  } from 'react-icons/fa';
 const HeaderButtons:React.FC = () => {
   return (
   <div
       style={{
         display: "flex",
         flexWrap: "wrap",
-        gap: "1rem",
-        // justifyContent: "center",
-        marginTop: "2rem",
+        gap: "0.5rem",
       }}
     >
-      <Card label="Total Tickets" value={100} Icon={FaTicketAlt} iconColor="#6c757d" iconBackgroundColor="#e9ecef" /> {/* Gray for total/closed */} 
+      <Card label="Total " value={100} Icon={FaTicketAlt} iconColor="#6c757d" iconBackgroundColor="#e9ecef" /> 
 
-<Card label="Open Tickets" value={55} Icon={FaEnvelopeOpenText} iconColor="#28a745" iconBackgroundColor="#d4edda" /> {/* Green for open */}
+<Card label="Open " value={55} Icon={MdPendingActions} iconColor="#28a745" iconBackgroundColor="#d4edda" /> 
 
-<Card label="Resolved Tickets" value={30} Icon={FaCheckCircle} iconColor="#6c757d" iconBackgroundColor="#e9ecef" /> {/* Gray for closed/resolved */}
+<Card label="In Progress" value={30} Icon={FaSpinner} iconColor="#ffc107" iconBackgroundColor="#e9ecef" /> 
 
-<Card label="Escalated Tickets" value={15} Icon={FaExclamationTriangle} iconColor="#ffc107" iconBackgroundColor="#fff8e1" /> {/* Amber for in_progress/escalated */}
+<Card label="Resolved " value={15} Icon={MdCheckCircleOutline} iconColor="#6c757d" iconBackgroundColor="#fff8e1" /> 
 
     </div>
   )
@@ -31,15 +29,15 @@ interface CardProps {
   label: string;
   value: number | string;
   Icon: IconType  ; 
-  iconColor?: string; // optional: icon color
-  iconBackgroundColor?: string; // optional: icon background
+  iconColor?: string; 
+  iconBackgroundColor?: string; 
 }
 
 const Card: React.FC<CardProps> = ({ label, value, Icon, iconColor = "#007bff", iconBackgroundColor = "#e0f0ff" }) => {
   return (
     <div
       style={{
-        border: `2px solid ${iconColor}`,
+       
         borderRadius: "8px",
         padding: "12px",
         width: "250px",
@@ -49,13 +47,13 @@ const Card: React.FC<CardProps> = ({ label, value, Icon, iconColor = "#007bff", 
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        gap: "2rem",
+        gap: "0.5rem",
+        backgroundColor:'white',
       }}
     >
-      {/* Text Section */}
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-        <p style={{ margin: 0, fontWeight: "bold" }}>{label}</p>
-        <p style={{ margin: 0, fontSize: "1.2rem", color: iconColor }}>{value}</p>
+        <p style={{ margin: 0, fontSize:'0.9rem'  }}>{label}</p>
+        <p style={{ margin: 0, fontSize: "1.2rem", color: iconColor , fontWeight: "bold" }}>{value}</p>
       </div>
 
       {/* Icon Section */}
@@ -64,15 +62,16 @@ const Card: React.FC<CardProps> = ({ label, value, Icon, iconColor = "#007bff", 
           display: "inline-flex",
           alignItems: "center",
           justifyContent: "center",
-          width: "60px",
-          height: "60px",
-          border: `2px solid ${iconColor}`,
-          borderRadius: "12px",
+          padding:'1rem',
+          // width: "60px",
+          // height: "50px",
+          // border: `2px solid ${iconColor}`,
+          borderRadius: "2rem",
           backgroundColor: iconBackgroundColor,
           cursor: "pointer",
         }}
       >
-        <Icon size={25} color={iconColor} />
+        <Icon size={22} color={iconColor} />
       </div>
     </div>
   );

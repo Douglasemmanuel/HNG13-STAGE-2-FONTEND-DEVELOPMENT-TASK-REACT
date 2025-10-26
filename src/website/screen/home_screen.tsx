@@ -11,7 +11,7 @@ const HomeScreen:React.FC = () => {
       <main className="flex-grow-1">
          <Header/>
       <Main/>
-      <Content/>
+      {/* <Content/> */}
       </main>
       <Footer />
     </div>

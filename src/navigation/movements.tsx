@@ -2,10 +2,12 @@ import React from 'react'
 import LoginScreen from '../webapp/screens/login_screen';
 import RegisterScreen from '../webapp/screens/register_screen';
 import HomeScreen from '../website/screen/home_screen';
-import Dashboard from '../webapp/modules/dashboard/dashboard';
+import CreateTicket from '../webapp/modules/dashboard/createTickets';
+import AllTickets from '../webapp/modules/dashboard/AllTickets';
+import Activeticket from '../webapp/modules/dashboard/Activeticket';
 import Maindash from '../webapp/modules/dashboard/Maindash';
-
 import { BrowserRouter as Router , Route , Routes} from 'react-router-dom'
+import EditTickets from '../webapp/modules/dashboard/EditTickets';
 const Movements:React.FC = () => {
   return (
    <>
@@ -14,9 +16,12 @@ const Movements:React.FC = () => {
     <Route path='/' element={<HomeScreen/>}/>
     <Route path='/login' element={<LoginScreen/>}/>
     <Route path='/signup' element={<RegisterScreen/>}/>
-    <Route path="/dashboard" element={<Dashboard />}>
-     <Route index element={<Maindash />} /> 
-    </Route>
+    <Route path="/create-ticket" element={<CreateTicket />}/>
+     <Route path="/active-ticket" element={<Activeticket />}/>
+      <Route path="/all-tickets" element={<AllTickets/>}/>
+     <Route path="/dashboard" element={<Maindash />} /> 
+      <Route path="/edit-ticket" element={<EditTickets/>}/>
+   
     </Routes>
    </Router>
    </>

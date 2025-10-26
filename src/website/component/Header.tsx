@@ -9,7 +9,7 @@ import { useCurrentUser } from '../../webapp/modules/auth/hooks/user_hooks';
 const Header:React.FC = () => {
   return (
     <>
-    <Navbar DOUGLAS={DOUGLAS} lOGO={lOGO}/>
+    <Navbar  lOGO={lOGO}/>
     </>
   )
 }
@@ -23,9 +23,9 @@ export default Header;
 
 interface NavbarProps {
   lOGO: string;
-  DOUGLAS: string;
+ 
 }
-const Navbar: React.FC<NavbarProps> = ({ lOGO, DOUGLAS }) => {
+const Navbar: React.FC<NavbarProps> = ({ lOGO }) => {
   const [isOpen, setIsOpen] = useState(false);
    const [isAuthenticated, setIsAuthenticated] = useState(false);
    const navigate = useNavigate()
@@ -39,7 +39,7 @@ const Navbar: React.FC<NavbarProps> = ({ lOGO, DOUGLAS }) => {
   };
 
    const goToHome = () => {
-    navigate("/");
+    navigate("/dashboard");
   };
 
   return (
@@ -68,7 +68,7 @@ const Navbar: React.FC<NavbarProps> = ({ lOGO, DOUGLAS }) => {
   {/* Desktop Avatar */}
   <div className="d-none d-md-flex align-items-center">
    {currentUser ? (
-        <div className="d-none d-md-flex align-items-center">
+        <div className="d-none d-md-flex align-items-center" onClick={goToHome} style={{ cursor: "pointer" }}>
           <Image src={lOGO} roundedCircle height={32} />
           <p className="mb-0 ps-2">{currentUser.firstName} {currentUser.lastName}</p>
         </div>
@@ -114,7 +114,7 @@ const Navbar: React.FC<NavbarProps> = ({ lOGO, DOUGLAS }) => {
       <Nav.Link href="#" className="px-3 py-2 rounded hover-bg">Orders</Nav.Link>
       <Nav.Link href="#" className="px-3 py-2 rounded hover-bg">More</Nav.Link>
       {currentUser ?
-        <Nav.Link href="#" className="d-flex align-items-center px-3 py-2 rounded hover-bg">
+        <Nav.Link href="/dashboard" className="d-flex align-items-center px-3 py-2 rounded hover-bg" style={{ cursor: "pointer" }}>
         <Image src={lOGO} roundedCircle height={32} className="me-2" />
             <p className="mb-0 ps-2">{currentUser.firstName} {currentUser.lastName}</p>
       </Nav.Link>
