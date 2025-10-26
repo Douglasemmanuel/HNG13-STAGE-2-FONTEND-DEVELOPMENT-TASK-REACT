@@ -44,7 +44,7 @@ Built with React, demonstrating authentication, protected routes, dashboard stat
 
 1. **Clone the repository**  
 ```bash
-git clonehttps://github.com/Douglasemmanuel/HNG13-STAGE-2-FONTEND-DEVELOPMENT-TASK-REACT.git
+git clone https://github.com/Douglasemmanuel/HNG13-STAGE-2-FONTEND-DEVELOPMENT-TASK-REACT.git
 cd ticket-app-react
 ````
 
