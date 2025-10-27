@@ -44,7 +44,7 @@ const Main: React.FC = () => {
     <h1 className="fw-bold display-4 mb-2">TicketHub</h1>
   </div>
           <p className="fs-5 mb-4 mt-4">
-            Discover, book, and enjoy your favorite live experiences effortlessly.
+            Track, prioritize, and complete your work effortlessly—turn chaos into clarity and make progress every step of the way.
           </p>
           <div className="d-flex flex-wrap justify-content-center gap-3">
            
