@@ -3,10 +3,17 @@ import { Table, Button } from "react-bootstrap";
 import { useTicketStore } from "./store/ticketstore";
 import { useNavigate } from "react-router-dom";
 import  type{ Ticket } from './store/ticketstore';
+import { HandIndex } from 'react-bootstrap-icons';
 const AllTickets: React.FC = () => {
   const tickets = useTicketStore((state) => state.tickets);
   const deleteTicket = useTicketStore((state) => state.deleteTicket);
   const navigate = useNavigate();
+  function handleDelete(ticketId: string): void {
+  const confirmed = window.confirm("Are you sure you want to delete this ticket?");
+  if (confirmed) {
+    deleteTicket(ticketId);
+  }
+}
 
   return (
     <div className="container mt-5">
@@ -61,31 +68,18 @@ const AllTickets: React.FC = () => {
                     variant="warning"
                     size="sm"
                     className="me-2"
-                    onClick={() => navigate(`/tickets/edit/${ticket.id}`)}
+                    onClick={() => navigate(`/edit-ticket/${ticket.id}`)}
                   >
                     Edit
                   </Button>
-                  {/* <Button
-                    variant="danger"
-                    size="sm"
-                    onClick={() => deleteTicket(ticket.id)}
-                  >
-                    Delete
-                  </Button> */}
+                
                 </td>
                   <td>
-                  {/* <Button
-                    variant="warning"
-                    size="sm"
-                    className="me-2"
-                    onClick={() => navigate(`/tickets/edit/${ticket.id}`)}
-                  >
-                    Edit
-                  </Button> */}
+                 
                   <Button
                     variant="danger"
                     size="sm"
-                    onClick={() => deleteTicket(ticket.id)}
+                    onClick={() => handleDelete(ticket.id)}
                   >
                     Delete
                   </Button>

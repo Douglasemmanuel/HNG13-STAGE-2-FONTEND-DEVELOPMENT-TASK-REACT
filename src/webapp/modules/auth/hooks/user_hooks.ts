@@ -24,9 +24,9 @@ export const useCurrentUser = () => {
 
   const logout = () => {
     localStorage.removeItem("ticketapp_session");
-    navigate('/')
     setCurrentUser(null);
+    navigate('/login')
   };
 
-  return { currentUser, logout };
+  return { currentUser,  setCurrentUser,logout };
 };

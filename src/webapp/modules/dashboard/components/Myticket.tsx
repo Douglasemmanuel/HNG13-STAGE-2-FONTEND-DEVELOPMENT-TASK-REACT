@@ -14,7 +14,7 @@ const Myticket:React.FC = () => {
     
     <div>
      <h3>Quick Actions</h3>
-      <div style={{  display: 'flex', gap: '20px' }}>
+      <div style={{  display: 'flex', gap: '20px' , flexWrap:'wrap' }}>
       <Card
         Icon={FaPlus}
         title="Add New"

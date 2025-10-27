@@ -41,13 +41,17 @@ const Navbar: React.FC<NavbarProps> = ({ lOGO }) => {
    const goToHome = () => {
     navigate("/dashboard");
   };
+  const goTointo = () => {
+    navigate("/");
+  };
+
 
   return (
     <>
       <BootstrapNavbar expand="md" bg="white" fixed='top' className="shadow-sm border-bottom fixed-top py-3">
        <Container className="d-flex justify-content-between align-items-center">
   {/* Logo */}
-  <BootstrapNavbar.Brand href="#" className="d-flex align-items-center" onClick={goToHome}>
+  <BootstrapNavbar.Brand href="#" className="d-flex align-items-center" onClick={currentUser ? goToHome : goTointo}>
     <Image src={lOGO} height={32} className="me-2" alt="Logo" />
     <span className="fw-medium text-dark">TicketHub</span>
     

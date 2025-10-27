@@ -9,6 +9,7 @@ import { useNavigate , Link } from 'react-router-dom';
 import {  toast } from "react-toastify";
 import { useLogin } from '../hooks/login_hooks';
 import { useState } from 'react';
+import { useCurrentUser } from '../hooks/user_hooks';
 const Loginform:React.FC = () => {
      const {
     register,
@@ -26,6 +27,7 @@ const Loginform:React.FC = () => {
  
    const navigate = useNavigate();
    const { login } = useLogin();
+   const { setCurrentUser } = useCurrentUser();
  // State for field errors
  const [errorsState, setErrorsState] = useState<Partial<LoginFormData>>({});
  
@@ -56,22 +58,24 @@ const Loginform:React.FC = () => {
      const result = login(data);
  
      if (result.success) {
+       
          toast.success("🎉 Login Successful.", {
              position: "top-center",
              autoClose: 2500,
              style: { width: "500px", maxWidth: "90%" },
          });
- 
+          setCurrentUser(result.user);
+          navigate("/dashboard");
          console.log("Form Data:", data);
  
          // Reset state
       
          setEmail("");
          setPassword("");
-    
+        
          setErrorsState({});
  
-         navigate("/dashboard");
+        
      } else {
          toast.error(" Email and Password  dont match", {
              position: "top-center",

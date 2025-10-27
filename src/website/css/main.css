@@ -8,17 +8,38 @@
 /* Hero Section */
 .hero-section {
   position: relative;
-  background: linear-gradient(
+  background-color: blue;
+  /* background: linear-gradient(
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.6)
     ),
-    url("../../images/davido.jpg") center/cover no-repeat;
+    url("../../images/davido.jpg") center/cover no-repeat; */
   min-height: 550px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+.custom-outline-btn {
+  border: 2px solid white; 
+  color: white; 
+}
 
+.custom-outline-btn:hover {
+  background-color: white;
+  color: #000dff;
+  border-color: white;
+}
+.custom-btn{
+  background-color: white;   
+  color: #0d6efd;           
+  border: 2px solid #0d6efd; 
+}
+
+.custom-btn:hover {
+  background-color: #0d6efd; 
+  color: white;              
+  border-color: #0d6efd;
+}
 /* Wavy SVG Background */
 .wave-bg {
   position: absolute;

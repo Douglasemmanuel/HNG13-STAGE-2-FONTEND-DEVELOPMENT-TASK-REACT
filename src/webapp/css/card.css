@@ -1,5 +1,5 @@
 .card {
-  display: flex;
+  /* display: flex; */
   /* align-items: center; */
   background-color: #ffffff;
   border: 2px solid #e0e0e0;
@@ -8,6 +8,7 @@
   cursor: pointer;
   transition: 0.3s;
   width: 330px;
+  /* flex-wrap: wrap; */
 }
 
 .card:hover {

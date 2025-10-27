@@ -3,7 +3,24 @@ import React from 'react'
 import type { IconType } from 'react-icons/lib';
 import { MdCheckCircleOutline, MdPendingActions } from 'react-icons/md';
 import {  FaTicketAlt, FaSpinner  } from 'react-icons/fa';
+import { useTicketStore } from '../store/ticketstore';
+
+export type Ticket = {
+  id: string;
+  status: "In Progress" | "Open" | "Closed";
+};
+
 const HeaderButtons:React.FC = () => {
+  // const ticket  = useTicketStore((state) => state.tickets);
+  // const total = ticket.length
+const tickets: Ticket[] = useTicketStore((state) => state.tickets);
+
+// Count tickets per status
+const openCount = tickets.filter(ticket => ticket.status === "Open").length;
+const resolvedCount = tickets.filter(ticket => ticket.status === "In Progress").length;
+const closedCount = tickets.filter(ticket => ticket.status === "Closed").length;
+const total = tickets.length;
+ 
   return (
   <div
       style={{
@@ -12,13 +29,14 @@ const HeaderButtons:React.FC = () => {
         gap: "0.5rem",
       }}
     >
-      <Card label="Total " value={100} Icon={FaTicketAlt} iconColor="#6c757d" iconBackgroundColor="#e9ecef" /> 
+      
+      <Card label="Total " value={total} Icon={FaTicketAlt} iconColor="#6c757d" iconBackgroundColor="#e9ecef" /> 
 
-<Card label="Open " value={55} Icon={MdPendingActions} iconColor="#28a745" iconBackgroundColor="#d4edda" /> 
+<Card label="Open " value={openCount} Icon={MdPendingActions} iconColor="#28a745" iconBackgroundColor="#d4edda" /> 
 
-<Card label="In Progress" value={30} Icon={FaSpinner} iconColor="#ffc107" iconBackgroundColor="#e9ecef" /> 
+<Card label="In Progress" value={resolvedCount} Icon={FaSpinner} iconColor="#ffc107" iconBackgroundColor="#e9ecef" /> 
 
-<Card label="Resolved " value={15} Icon={MdCheckCircleOutline} iconColor="#6c757d" iconBackgroundColor="#fff8e1" /> 
+<Card label="Resolved " value={closedCount} Icon={MdCheckCircleOutline} iconColor="#6c757d" iconBackgroundColor="#fff8e1" /> 
 
     </div>
   )
